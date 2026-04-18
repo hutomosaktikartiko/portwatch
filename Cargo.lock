@@ -1000,6 +1000,8 @@ dependencies = [
  "colored",
  "crossterm",
  "ratatui",
+ "serde",
+ "serde_json",
  "sysinfo",
  "tokio",
 ]
