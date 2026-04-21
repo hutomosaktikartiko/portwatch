@@ -1,5 +1,6 @@
 mod cli;
 mod scanner;
+mod ui;
 mod watcher;
 
 use anyhow::Ok;
