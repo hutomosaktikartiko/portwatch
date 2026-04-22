@@ -3,7 +3,6 @@ use ratatui::{
     Frame,
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style, Stylize},
-    text::{Line, Span},
     widgets::{Block, Borders, Cell, Paragraph, Row, Table, TableState},
 };
 
@@ -12,7 +11,6 @@ pub struct App {
     pub table_state: TableState,
     pub interval: u64,
     pub last_update: std::time::Instant,
-    pub should_quit: bool,
 }
 
 impl App {
@@ -22,7 +20,6 @@ impl App {
             table_state: TableState::default(),
             interval,
             last_update: std::time::Instant::now(),
-            should_quit: false,
         }
     }
 
@@ -100,7 +97,7 @@ impl App {
         )
         .header(header)
         .block(Block::default().borders(Borders::ALL).title(" Open Ports "))
-        .highlight_style(Style::default())
+        .row_highlight_style(Style::default())
         .bg(Color::Rgb(30, 111, 165))
         .add_modifier(Modifier::BOLD);
 

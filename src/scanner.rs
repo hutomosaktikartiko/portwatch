@@ -1,6 +1,5 @@
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
-use sysinfo::{Networks, Pid, System};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PortInfo {
@@ -15,9 +14,7 @@ trait PortScanner {
 }
 
 #[cfg(target_os = "macos")]
-struct MacScanner {
-    system: System,
-}
+struct MacScanner;
 
 #[cfg(target_os = "linux")]
 struct LinuxScanner;
@@ -28,9 +25,7 @@ struct WindowsScanner;
 #[cfg(target_os = "macos")]
 impl MacScanner {
     pub fn new() -> Self {
-        MacScanner {
-            system: System::new_all(),
-        }
+        MacScanner
     }
 
     fn enrich(&self, mut info: PortInfo) -> PortInfo {
